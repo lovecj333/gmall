@@ -1,8 +1,9 @@
 package com.atguigu.gmall.bean;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class UmsMember {
+public class UmsMember implements Serializable{
 
     private long id;
     private long member_level_id;
