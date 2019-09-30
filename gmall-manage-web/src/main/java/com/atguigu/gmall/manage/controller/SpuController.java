@@ -5,10 +5,7 @@ import com.atguigu.gmall.bean.PmsProductInfo;
 import com.atguigu.gmall.manage.util.PmsUploadUtil;
 import com.atguigu.gmall.service.SpuService;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import java.util.List;
 
@@ -29,5 +26,12 @@ public class SpuController {
     @ResponseBody
     public String fileUpload(@RequestParam("file") MultipartFile multipartFile){
         return PmsUploadUtil.uploadImage(multipartFile);
+    }
+
+    @RequestMapping("saveSpuInfo")
+    @ResponseBody
+    public String saveSpuInfo(@RequestBody PmsProductInfo pmsProductInfo){
+        spuService.saveSpuInfo(pmsProductInfo);
+        return "success";
     }
 }

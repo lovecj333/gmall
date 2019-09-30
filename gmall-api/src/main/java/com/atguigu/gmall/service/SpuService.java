@@ -6,4 +6,6 @@ import java.util.List;
 public interface SpuService {
 
     List<PmsProductInfo> spuList(long catalog3Id);
+
+    void saveSpuInfo(PmsProductInfo pmsProductInfo);
 }
