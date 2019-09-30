@@ -1,13 +1,23 @@
 package com.atguigu.gmall.bean;
 
+import javax.persistence.*;
 import java.io.Serializable;
+import java.util.List;
 
 public class PmsBaseAttrInfo implements Serializable {
 
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id
+    @Column
     private Long id;
+    @Column
     private String attrName;
+    @Column
     private Integer catalog3Id;
+    @Column
     private String isEnabled;
+    @Transient
+    List<PmsBaseAttrValue> attrValueList;
 
     public Long getId() {
         return id;
@@ -39,5 +49,13 @@ public class PmsBaseAttrInfo implements Serializable {
 
     public void setIsEnabled(String isEnabled) {
         this.isEnabled = isEnabled;
+    }
+
+    public List<PmsBaseAttrValue> getAttrValueList() {
+        return attrValueList;
+    }
+
+    public void setAttrValueList(List<PmsBaseAttrValue> attrValueList) {
+        this.attrValueList = attrValueList;
     }
 }
