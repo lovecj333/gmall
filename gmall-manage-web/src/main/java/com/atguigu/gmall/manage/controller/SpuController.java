@@ -1,7 +1,9 @@
 package com.atguigu.gmall.manage.controller;
 
 import com.alibaba.dubbo.config.annotation.Reference;
+import com.atguigu.gmall.bean.PmsProductImage;
 import com.atguigu.gmall.bean.PmsProductInfo;
+import com.atguigu.gmall.bean.PmsProductSaleAttr;
 import com.atguigu.gmall.manage.util.PmsUploadUtil;
 import com.atguigu.gmall.service.SpuService;
 import org.springframework.stereotype.Controller;
@@ -20,6 +22,18 @@ public class SpuController {
     @ResponseBody
     public List<PmsProductInfo> spuList(long catalog3Id){
         return spuService.spuList(catalog3Id);
+    }
+
+    @RequestMapping("spuSaleAttrList")
+    @ResponseBody
+    public List<PmsProductSaleAttr> spuSaleAttrList(long productId){
+        return spuService.spuSaleAttrList(productId);
+    }
+
+    @RequestMapping("spuImageList")
+    @ResponseBody
+    public List<PmsProductImage> spuImageList(long productId){
+        return spuService.spuImageList(productId);
     }
 
     @RequestMapping("fileUpload")

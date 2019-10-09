@@ -25,7 +25,14 @@ public class BaseAttrServiceImpl implements BaseAttrService{
     public List<PmsBaseAttrInfo> attrInfoList(int catalog3Id) {
         PmsBaseAttrInfo pmsBaseAttrInfo = new PmsBaseAttrInfo();
         pmsBaseAttrInfo.setCatalog3Id(catalog3Id);
-        return pmsBaseAttrInfoMapper.select(pmsBaseAttrInfo);
+        List<PmsBaseAttrInfo> pmsBaseAttrInfos = pmsBaseAttrInfoMapper.select(pmsBaseAttrInfo);
+        for(PmsBaseAttrInfo attrInfo : pmsBaseAttrInfos){
+            PmsBaseAttrValue attrValue = new PmsBaseAttrValue();
+            attrValue.setAttrId(attrInfo.getId());
+            List<PmsBaseAttrValue> attrValues = pmsBaseAttrValueMapper.select(attrValue);
+            attrInfo.setAttrValueList(attrValues);
+        }
+        return pmsBaseAttrInfos;
     }
 
     @Override
