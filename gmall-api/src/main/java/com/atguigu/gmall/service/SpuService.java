@@ -11,6 +11,8 @@ public interface SpuService {
 
     List<PmsProductSaleAttr> spuSaleAttrList(long productId);
 
+    List<PmsProductSaleAttr> spuSaleAttrListCheckBySku(long productId, long skuId);
+
     List<PmsProductImage> spuImageList(long productId);
 
     void saveSpuInfo(PmsProductInfo pmsProductInfo);

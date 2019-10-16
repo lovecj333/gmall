@@ -48,6 +48,11 @@ public class SpuServiceImpl implements SpuService{
     }
 
     @Override
+    public List<PmsProductSaleAttr> spuSaleAttrListCheckBySku(long productId, long skuId) {
+        return pmsProductSaleAttrMapper.selectSpuSaleAttrListCheckBySku(productId,skuId);
+    }
+
+    @Override
     public List<PmsProductImage> spuImageList(long productId) {
         PmsProductImage pmsProductImage = new PmsProductImage();
         pmsProductImage.setProductId(productId);

@@ -50,4 +50,27 @@ public class SkuServiceImpl implements SkuService{
             pmsSkuImageMapper.insertSelective(skuImage);
         }
     }
+
+    public PmsSkuInfo getSkuInfoByIdFromDb(long skuId) {
+        //skuInfo
+        PmsSkuInfo pmsSkuInfo = new PmsSkuInfo();
+        pmsSkuInfo.setId(skuId);
+        PmsSkuInfo skuInfo = pmsSkuInfoMapper.selectOne(pmsSkuInfo);
+        //skuImage
+        PmsSkuImage pmsSkuImage = new PmsSkuImage();
+        pmsSkuImage.setSkuId(skuId);
+        List<PmsSkuImage> skuImages = pmsSkuImageMapper.select(pmsSkuImage);
+        skuInfo.setSkuImageList(skuImages);
+        return skuInfo;
+    }
+
+    @Override
+    public PmsSkuInfo getSkuInfoById(long skuId) {
+        return getSkuInfoByIdFromDb(skuId);
+    }
+
+    @Override
+    public List<PmsSkuInfo> getSkuSaleAttrValueListBySpu(long productId) {
+        return pmsSkuInfoMapper.selectSkuSaleAttrValueListBySpu(productId);
+    }
 }
